@@ -1,0 +1,12 @@
+---
+
+- name: Reboot Multiple  Ubuntu Servers
+  hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: Reboot the Machines and wait for it to come back on line
+      ansible.builtin.reboot:
+        reboot_timeout: 600
+#This is just a comment
