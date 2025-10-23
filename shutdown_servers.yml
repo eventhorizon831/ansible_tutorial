@@ -1,0 +1,21 @@
+---
+
+- name: Shutdown Multiple Ubuntu Servers
+  hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: Shutdown the Machines
+#      ansible.builtin.shutdown:
+      community.general.shutdown:
+        delay: 0
+      register: shutdown_result
+
+
+    - name: Report Shutdown Status
+      debug:
+        msg: "Server {{ inventory_hostname }} shutdown initiated. Result: {{ shutdown_result }}"
+#        reboot_timeout: 600
+#This is just a comment
+#Willy!!!
