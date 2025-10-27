@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Test connectivity to the target hosts
+      ping: 8.8.8.8
+      register: ping_result
+
+    - name: Display ping results
+      debug:
+        var: ping_result
+
+    - name: Fail if ping was unsuccessful
+      fail:
+        msg: "Ping to 8.8.8.8 failed"
+      when: ping_result is failed

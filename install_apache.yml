@@ -4,12 +4,12 @@
   become: true
   tasks:
 
-  - name: update repository index for Ubuntu
+  - name: Update repository index for Ubuntu
     apt:
-      update_cache: yes
-    when: ansible_distribution_version == "Ubuntu"
+      update_cache: true
+    when: ansible_distribution == "Ubuntu"
 
-  - name: install apache2 package and php packages for Ubuntu
+  - name: Install apache2 package and php packages for Ubuntu
     apt:
       name:
         - apache2
@@ -17,17 +17,13 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
+  - name: Update repository index for CentOS
+    ansible.builtin.dnf:
+      update_cache: true
+    when: ansible_distribution == "CentOS"
 
-
-
-
-  - name: update repository index for CentOS
-    dnf:
-      update_cache: yes
-    when: ansible_distribution_version == "CentOS"
-
-  - name: install php packages for Centos
-    dnf:
+  - name: Install php packages for CentOS
+    ansible.builtin.dnf:
       name:
         - httpd
         - php

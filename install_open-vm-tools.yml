@@ -10,6 +10,6 @@
 
   - name: install open-vm-tools package
     apt:
-      name:  open-vm-tools
+      name: open-vm-tools
       state: latest
-#This is just a comment
+# This is just a comment
