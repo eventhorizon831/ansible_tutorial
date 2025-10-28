@@ -1,6 +1,6 @@
 ---
 
-- name: Reboot Multiple  Ubuntu Servers
+- name: Reboot Multiple Servers
   hosts: all
   become: true
   gather_facts: false

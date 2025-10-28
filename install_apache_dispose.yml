@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Install apache and php
+    package:
+      name:
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+      state: true
+      update_cache: true
+
+# This was created in Visual Studio Code

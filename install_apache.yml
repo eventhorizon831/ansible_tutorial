@@ -4,17 +4,13 @@
   become: true
   tasks:
 
-  - name: Update repository index for Ubuntu
-    apt:
-      update_cache: true
-    when: ansible_distribution == "Ubuntu"
-
   - name: Install apache2 package and php packages for Ubuntu
     apt:
       name:
         - apache2
         - libapache2-mod-php
       state: latest
+      update_cache: true
     when: ansible_distribution == "Ubuntu"
 
   - name: Update repository index for CentOS
@@ -22,12 +18,10 @@
       update_cache: true
     when: ansible_distribution == "CentOS"
 
-  - name: Install php packages for CentOS
-    ansible.builtin.dnf:
+  - name: Install apache and php packages for CentOS
+    dnf:
       name:
         - httpd
         - php
       state: latest
     when: ansible_distribution == "CentOS"
-
-# This was created in Visual Studio Code

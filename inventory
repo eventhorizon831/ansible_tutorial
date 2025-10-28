@@ -1,4 +1,9 @@
+[web_servers]
 ubuntu-1
 ubuntu-2
+
+[db_servers]
 ubuntu-3
+
+[file_servers]
 centos-1
