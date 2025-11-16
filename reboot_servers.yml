@@ -1,7 +1,7 @@
 ---
 
 - name: Reboot Multiple Servers
-  hosts: all
+  hosts: web_servers,db_servers,file_servers
   become: true
   gather_facts: false
 
