@@ -18,6 +18,16 @@
       update_cache: true
     when: ansible_distribution == "Ubuntu"
 
+- hosts: all
+  become: true
+  tasks:
+  
+  - name: create simone user
+    tags: always
+    user:
+      name: simone
+      groups: root
+
 - hosts: workstations
   become: true
   tasks:
@@ -90,7 +100,6 @@
      group: root
      mode: 0644
 
-
 - hosts: db_servers
   become: true
   tasks:
@@ -108,7 +117,6 @@
       name: mariadb-server
       state: latest
     when: ansible_distribution == "Ubuntu"
-
 
 - hosts: file_servers
   become: true
