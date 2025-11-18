@@ -38,7 +38,7 @@
     tags: always
     copy:
       src: sudoers_simone
-      dest: /etc/sudoers.d/simons
+      dest: /etc/sudoers.d/simone
       owner: root
       group: root
 
