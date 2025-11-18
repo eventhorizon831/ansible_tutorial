@@ -4,16 +4,18 @@
   become: true
   pre_tasks:
 
-  - name: install updates (CentOs)
+  - name: update repo cache (CentOs)
     tags: always
     dnf:
       update_cache: true
+    changed_when: false
     when: ansible_distribution == "CentOS"
 
-  - name: install updates (Ubuntu)
+  - name: update repo cache (Ubuntu)
     tags: always
     apt:
       update_cache: true
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
 
 - hosts: all
@@ -26,11 +28,11 @@
 #      name: simone
 #      groups: root
 
-#  - name: add ssh key for simone
-#    tags: always
-#    authorized_key:
-#      user: simone
-#      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhm6dlI+gcXtj26kY2PZoylvBjDptZQVXGuabdm67Ky ansible"
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHhm6dlI+gcXtj26kY2PZoylvBjDptZQVXGuabdm67Ky ansible"
 
 #  - name: add sudoers file for simone
 #    tags: always
